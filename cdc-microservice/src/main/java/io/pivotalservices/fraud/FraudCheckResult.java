@@ -1,17 +1,17 @@
-package io.pivotalservices;
+package io.pivotalservices.fraud;
 
 public class FraudCheckResult {
 
 	private FraudCheckStatus fraudCheckStatus;
 
-	private String rejectionReason;
+	private String resultText;
 
 	public FraudCheckResult() {
 	}
 
-	public FraudCheckResult(FraudCheckStatus fraudCheckStatus, String rejectionReason) {
+	public FraudCheckResult(FraudCheckStatus fraudCheckStatus, String resultText) {
 		this.fraudCheckStatus = fraudCheckStatus;
-		this.rejectionReason = rejectionReason;
+		this.resultText = resultText;
 	}
 
 	public FraudCheckStatus getFraudCheckStatus() {
@@ -22,11 +22,11 @@ public class FraudCheckResult {
 		this.fraudCheckStatus = fraudCheckStatus;
 	}
 
-	public String getRejectionReason() {
-		return rejectionReason;
+	public String getResultText() {
+		return resultText;
 	}
 
-	public void setRejectionReason(String rejectionReason) {
-		this.rejectionReason = rejectionReason;
+	public void setResultText(String resultText) {
+		this.resultText = resultText;
 	}
 }

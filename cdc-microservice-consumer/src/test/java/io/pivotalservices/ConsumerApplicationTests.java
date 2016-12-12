@@ -7,8 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-//@AutoConfigureStubRunner(ids = {"io.pivotalservices:cdc-microservice:+:stubs:8080"}, workOffline = true)
-public class CdcMicroserviceApplicationTests {
+public class ConsumerApplicationTests {
 
 	@Test
 	public void contextLoads() {

@@ -1,13 +1,12 @@
-package io.pivotalservices;
+package io.pivotalservices.fraud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@EnableDiscoveryClient
 @SpringBootApplication
-public class CdcMicroserviceApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CdcMicroserviceApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

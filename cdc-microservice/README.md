@@ -1,10 +1,10 @@
 ## Consumer Driven Contract - Service Side
 
-This project illustrates using Spring Cloud Contract's verifier to verify a service using Groovy based input and output definitions. During the process, JUnit tests based on these contracts are automatically generated and executed against the business logic in the controller.
+This project illustrates using Spring Cloud Contract's verifier to verify a service using Groovy based input and output definitions. During the process, JUnit tests based on these io.pivotalservices.contracts are automatically generated and executed against the business logic in the controller.
 
 ### Setup the Contracts
 
-The contracts are located in the folder `src/test/resources/contracts/fraud`. They are Groovy documents that look similar to this:-
+The io.pivotalservices.contracts are located in the folder `src/test/resources/io.pivotalservices.contracts/fraud`. They are Groovy documents that look similar to this:-
 
 ```groovy
 package contracts.fraud
@@ -28,7 +28,7 @@ org.springframework.cloud.contract.spec.Contract.make {
         body("""
   {
     "fraudCheckStatus": "FRAUD",
-    "rejectionReason": "Amount too high"
+    "resultText": "Amount too high"
   }
   """)
         headers {
@@ -42,7 +42,7 @@ They describe the inputs and the outputs expected by the `FraudDetectionControll
 
 ### Setup a 'Base' class for the auto-generated tests
  
-Because the contracts are stored under contracts.**fraud** a base class called **Fraud**Base must be added in the test folder. You can see it under `test/java/io.pivotalservices` in the source code directory. The base class sets up the RestAssured MockMvc framework to mock out the `FraudDetectionController` class and it looks similar to this...
+Because the io.pivotalservices.contracts are stored under io.pivotalservices.contracts.**fraud** a base class called **Fraud**Base must be added in the test folder. You can see it under `test/java/io.pivotalservices` in the source code directory. The base class sets up the RestAssured MockMvc framework to mock out the `FraudDetectionController` class and it looks similar to this...
 
 ```java
 package io.pivotalservices;
@@ -94,7 +94,7 @@ public void validate_shouldMarkClientAsFraud() throws Exception {
     assertThat(response.header("Content-Type")).isEqualTo("application/vnd.fraud.v1+json;charset=UTF-8");
     // and:
     DocumentContext parsedJson = JsonPath.parse(response.getBody().asString());
-    assertThatJson(parsedJson).field("rejectionReason").isEqualTo("Amount too high");
+    assertThatJson(parsedJson).field("resultText").isEqualTo("Amount too high");
     assertThatJson(parsedJson).field("fraudCheckStatus").isEqualTo("FRAUD");
 }
 ```

@@ -1,4 +1,4 @@
-package contracts.fraud
+package contracts
 
 org.springframework.cloud.contract.spec.Contract.make {
     request {
@@ -7,7 +7,7 @@ org.springframework.cloud.contract.spec.Contract.make {
         body("""
     {
       "clientId":"1234567890",
-      "loanAmount":4999
+      "loanAmount":99999
     }
     """)
         headers {
@@ -18,8 +18,8 @@ org.springframework.cloud.contract.spec.Contract.make {
         status 200
         body("""
   {
-    "fraudCheckStatus": "OK",
-    "rejectionReason": ""
+    "fraudCheckStatus": "FRAUD",
+    "resultText": "Amount too high"
   }
   """)
         headers {

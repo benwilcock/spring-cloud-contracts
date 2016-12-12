@@ -1,4 +1,4 @@
-package io.pivotalservices;
+package io.pivotalservices.fraud;
 
 import java.math.BigDecimal;
 
@@ -9,6 +9,11 @@ public class FraudCheck {
 	private BigDecimal loanAmount;
 
 	public FraudCheck() {
+	}
+
+	public FraudCheck(String clientId, BigDecimal loanAmount) {
+		this.clientId = clientId;
+		this.loanAmount = loanAmount;
 	}
 
 	public String getClientId() {

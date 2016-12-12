@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-./gradlew clean build publishToMavenLocal
+rm -rf ~/.m2/repository/io/pivotalservices/
+gradle clean build generateWireMockClientStubs publishToMavenLocal $1
