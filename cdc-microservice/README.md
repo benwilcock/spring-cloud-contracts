@@ -40,7 +40,7 @@ org.springframework.cloud.contract.spec.Contract.make {
 
 They describe the inputs and the outputs expected by the `FraudDetectionController` which is a Spring Boot microservice whose source you can see in the `src/main/java/io/pivotalservices` folder.
 
-### Setup the 'Base' class for testing
+### Setup a 'Base' class for the auto-generated tests
  
 Because the contracts are stored under contracts.**fraud** a base class called **Fraud**Base must be added in the test folder. You can see it under `test/java/io.pivotalservices` in the source code directory. The base class sets up the RestAssured MockMvc framework to mock out the `FraudDetectionController` class and it looks similar to this...
 
@@ -59,7 +59,7 @@ public class FraudBase {
 }
 ```
 
-### Build and Test
+### Build & Test the Service logic
 
 To generate and run the Consumer Driven Contract test verifier, execute the following:-
 
