@@ -1,0 +1,72 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+//        mavenLocal()
+//        maven { url "http://repo.spring.io/snapshot" }
+//        maven { url "http://repo.spring.io/milestone" }
+//        maven { url "http://repo.spring.io/release" }
+	}
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE"
+        classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:1.0.2.RELEASE"
+    }
+}
+
+group = 'io.pivotalservices'
+version = '0.0.1-SNAPSHOT'
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'spring-cloud-contract'
+//apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+//    mavenLocal()
+//    maven { url "http://repo.spring.io/snapshot" }
+//    maven { url "http://repo.spring.io/milestone" }
+//    maven { url "http://repo.spring.io/release" }
+}
+
+
+dependencyManagement {
+    imports {
+        //mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
+        mavenBom 'org.springframework.cloud:spring-cloud-contract-dependencies:1.0.2.RELEASE'
+    }
+}
+
+contracts {
+    packageWithBaseClasses = 'io.pivotalservices'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+    //compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    //testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
+	//testCompile('org.springframework.cloud:spring-cloud-contract-wiremock')
+}
+
+//contractVerifier {
+//    // In this section you define all Spring Cloud Contract Verifier Gradle Plugin properties
+//    baseClassForTests = 'io.pivotalservices.ContractVerifierBase'
+//    // The fully qualified name to a class that will be the base class for your generated test classes
+//}
+//contractVerifier {
+//    // In this section you define all Spring Cloud Contract Verifier Gradle Plugin properties
+//    baseClassForTests = 'io.pivotalservices.MvcTest'
+//    // The fully qualified name to a class that will be the base class for your generated test classes
+//}
