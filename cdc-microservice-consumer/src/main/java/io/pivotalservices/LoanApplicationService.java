@@ -10,6 +10,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
+/**
+ * This class has a runtime dependency on the `cdc-microservice' and it's `/fraudcheck` REST API.
+ * At runtime it will attempt to call this API using a standard Spring RestTemplate. The endpoint, the requests
+ * and the responses form the 'contract' that this application relies upon to communicate with the service.
+ * Therefore, it's vital that we have confidence that we are communicating with the server in the way that we have
+ * agreed. If we, or the server deviate from this contract it's helpful to know as soon as possible so that
+ * steps can be taken to rectify the divergence before users are impacted.
+ *
+ * In order to do obtain this certainty without creating tight-coupling, we can use the same contracts that the server
+ * team uses to define a mock that mimics the real thing. Head to the test cases in `/test/java/io/pivotalservices`
+ * to find out more...
+ */
 @Service
 public class LoanApplicationService {
 

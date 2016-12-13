@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
-  testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
+	testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
 }
 
 dependencyManagement {
