@@ -5,18 +5,19 @@ import io.pivotalservices.fraud.FraudDetectionController;
 import org.junit.Before;
 
 /**
- * Required by the Client Driven Contracts framework as the base class for all generated sources.
- * Created by benwilcock on 08/12/2016.
+ * Required by the Client Driven Contracts framework as the base class for all the auto-generated source classes.
  *
- * IMPORTANT - The Name of this class has to reflect the package name of the groovy tests. So of the
- * groovy tests are in 'resources/io.pivotalservices.contracts/fraud' this class must be called 'FraudTest'. If the package of
- * the groovy tests changed to 'resources/io.pivotalservices.contracts/fraudster' then this class would need to be renamed to
- * 'FraudsterBase'.
+ * The Service's contract definitions (the groovy files located in in `/test/resources/contracts`) will be used
+ * during the build to create a series of additional test that extend this base class. These test classes will be
+ * written to `/build/generated-test-sources` and they will be run during the build phase.
+ *
+ * This adds an additional layer or behavioural testing that verifies the functionality in our service.
  */
 public class ContractVerifierBase {
 
     @Before
     public void setup() {
-        RestAssuredMockMvc.standaloneSetup(new FraudDetectionController()); // Set up the programmable Mock for the Controller.
+        // Set up the programmable Mock for the Controller under test, in this case the `FraudDetectionController`.
+        RestAssuredMockMvc.standaloneSetup(new FraudDetectionController());
     }
 }
