@@ -25,7 +25,9 @@ The first step is to setup the build script and bring in the Spring Cloud Contra
 
   It's in this package in the folder `src/test/java/io/pivotalservices` that I have included the mandatory base class for the auto generated tests.
 
-3. Add the testing base-class for the suto-generated tests to extend.
+3. Add the testing base-class.
+
+  With Spring Cloud Contract, additional JUnit tests are auto-generated for you based on the contracts that you supply. Each of those auto generated tests needs to extend a base class that defined the controller under test. This base class is as follows in this example...
 
   ```java
   package io.pivotalservices;
@@ -43,11 +45,11 @@ The first step is to setup the build script and bring in the Spring Cloud Contra
   }
   ```
 
-  This class is used to setup the programmeable Mock for testing the controller.
+  You could run into difficulties if you don't provide a base class, or if this class is in the wrong place, or if it has the wrong name, or if it's mixed in with other classes. I'll tell you how to check everything is working later.
 
 ### Setup the Contracts
 
-Once the project is setup, it's time to add some contracts. The service contracts are located in the folder `src/test/resources/contracts`. They are Groovy documents that look similar to this:-
+Once the project is setup, it's time to add some contracts. The service contracts are located in the folder `src/test/resources/contracts`. These contracts are simple 'Groovy' documents that look similar to this:-
 
 ```groovy
 package contracts
@@ -81,7 +83,7 @@ org.springframework.cloud.contract.spec.Contract.make {
 }
 ```
 
-They describe the inputs and the outputs (requests and responses) expected when interacting with the `FraudDetectionController` (which is a Spring Boot microservice whose source code can be found in the `src/main/java/io/pivotalservices/fraud` folder).
+They describe the inputs and the outputs (requests and responses) expected when interacting with the service implemented by the `FraudDetectionController` (which is a Spring Boot microservice whose source code can be found in the `src/main/java/io/pivotalservices/fraud` folder).
 
 ### Build and Test the Service logic
 
@@ -91,9 +93,9 @@ To generate and run the Consumer Driven Contract test verifier, execute the foll
 $ gradle clean build
 ````
 
-When you do this, a suite of Java tests are auto generated as part of th build. You can find these auto generated tests in `build/generated-test-sources` (in Gradle). You should go and examine these tests. If the process didn't work for some reason, the generated-test-sources folder may be empty!
+When you do this, a suite of Java tests are auto generated as part of the build. You can see these auto generated tests in the folder `build/generated-test-sources`. You should go and examine these tests each time. If the process didn't work for some reason, the generated-test-sources folder may be empty and you won't necessarily have been alerted to their loss.
 
-When successfully generated, the tests produced look something like this:-
+When successfully auto-generated, the tests produced look something like this:-
 
 ```java
 @Test
@@ -117,7 +119,7 @@ public void validate_shouldMarkClientAsFraud() throws Exception {
 }
 ```
 
-These tests are executed as part of the `gradle build`. If they fail, the build will fail in the usual way.
+You can see that the code produced by the code generator mimics the Groovy contract that we had defined earlier. These tests are executed as part of the `build` process. If the tests fail, the build will fail in the usual way. 
 
 ### Exporting the contracts
 

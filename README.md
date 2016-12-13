@@ -58,35 +58,5 @@ There is a script that will perform the above steps for you. See `run.sh`.
 
 4. **Maven repositories are an integral part of the solution.** In particular for this demo, the maven local repository often known as `.m2` is the glue between projects. It's the location where the service contracts and the wiremock stub instructions are shared between projects. In a gradle environment, this may cause extra headaches. In gradle, you also have to specifically 'publish' these artifacts to the repository each time.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [a]: https://cloud.spring.io/spring-cloud-contract/
 [b]: https://projects.spring.io/spring-boot/
