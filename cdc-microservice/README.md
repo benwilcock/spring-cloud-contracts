@@ -1,6 +1,12 @@
 ## Consumer Driven Contract - Service Side
 
-This project illustrates using Spring Cloud Contract's verifier to verify a service's contract is being upheld. This is done using input and output scripts (groovy) that define the behaviour. During the process, JUnit tests are automatically generated based on these 'service contracts' and run against the service's controller code during the build phase. If the build is successful, these definitions are then packaged up and placed into the local Maven repository for use by service consumers.
+This project illustrates using Spring Cloud Contract's verifier to verify a service's contract is being upheld.
+
+This verification is performed based upon specific input and output scripts that define the service's expected behaviour. During the build process, JUnit tests are automatically generated based on these 'service contracts' and these are run against the service's controller code.
+
+If the build is successful, these definitions can then be packaged up and placed into the local Maven repository for use by our service's various consumers.
+
+> The `cdc-microservice-consumer` is one such example of a 'service consumer'.
 
 ### Setting up the Project
 
@@ -119,7 +125,7 @@ public void validate_shouldMarkClientAsFraud() throws Exception {
 }
 ```
 
-You can see that the code produced by the code generator mimics the Groovy contract that we had defined earlier. These tests are executed as part of the `build` process. If the tests fail, the build will fail in the usual way. 
+You can see that the code produced by the code generator mimics the Groovy contract that we had defined earlier. These tests are executed as part of the `build` process. If the tests fail, the build will fail in the usual way.
 
 ### Exporting the contracts
 

@@ -58,5 +58,27 @@ There is a script that will perform the above steps for you. See `run.sh`.
 
 4. **Maven repositories are an integral part of the solution.** In particular for this demo, the maven local repository often known as `.m2` is the glue between projects. It's the location where the service contracts and the wiremock stub instructions are shared between projects. In a gradle environment, this may cause extra headaches. In gradle, you also have to specifically 'publish' these artifacts to the repository each time.
 
+## Extra Credit
+
+The contracts can be defined to have quite sophisticated behaviours rather than fixed text based responses. There is a full DSL for defining contracts which is [documented in detail here][c].
+
+
+## License
+The project is released under version 2.0 of the [Apache License][d].
+
+## About the Author
+
+[Ben Wilcock][m] works for [Pivotal][n] as a Senior Solutions Architect. Ben has a passion for microservices, cloud and mobile applications and helps [Pivotal's Cloud Foundry][n] customers to become more responsive, innovate faster and gain greater returns from their software investments. Ben is a respected technology [blogger][o] who's articles have featured in [DZone][p], [Java Code Geeks][q], [InfoQ][r], [Spring Blog][s] and more.
+
+
 [a]: https://cloud.spring.io/spring-cloud-contract/
 [b]: https://projects.spring.io/spring-boot/
+[c]: https://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html#_contract_dsl
+[d]: http://www.apache.org/licenses/LICENSE-2.0
+[m]: https://uk.linkedin.com/in/benwilcock
+[n]: http://pivotal.io/platform
+[o]: http://benwilcock.wordpress.com
+[p]: https://dzone.com/users/296242/benwilcock.html
+[q]: https://www.javacodegeeks.com/author/ben-wilcock/
+[r]: https://www.infoq.com/author/Ben-Wilcock
+[s]: https://spring.io/blog
