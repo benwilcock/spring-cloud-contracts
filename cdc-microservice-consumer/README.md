@@ -72,7 +72,21 @@ private FraudServiceResponse sendRequestToFraudDetectionService(
 
 When the test is run, the Stub Runner will obtain the contracts from the Maven repository and start a Mock service based on the instructions inside the `stubs.jar`. It uses WireMock to do this. This mock service will then wait for interactions on port 6565.
 
-As the test executes, the mock is used in the place of the real service - meaning there is no longer a tightly-coupled runtime dependency between the consumer and the service. The consumer code is blissfully unaware of the fact that a mock service is being used.
+To run the test use Gradle as follows:-
+
+```bash
+$ gradle clean build
+```
+
+As the test executes, a mock service is now used in the place of the real service - meaning there is no longer a tightly-coupled runtime dependency between the service-consumer and the service itself. The consumer code is blissfully unaware of the fact that a mock service is being used.
+
+#### Troubleshooting
+
+If the process of testing using the mock server was unsuccessful, you may get some exeptions that contain  `Server 404` type errors.
+
+If you haven't changed the code yet, then generally this would mean that either the `stub.jar` could not be found in the Maven repository or more likely, it didn't contain the `.json` files required by WireMock library to create the fake server.
+
+These `.json` files would generally be found in the `build` folder of the `cdc-microservice` project under `stubs/mappings`. If the JSON files are there, it may mean that the `publishToMavenLocal` step has failed or needs to be re-run. Run the `publishToMavenLocal` command in the `cdc-microservice` project and then check your local Maven repository for the stub.jar.
 
 ## Summary
 
