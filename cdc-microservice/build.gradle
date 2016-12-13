@@ -43,8 +43,6 @@ contracts {
 }
 
 dependencies {
-    //compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
-    //testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -21,26 +21,23 @@ jar {
 	baseName = 'cdc-microservice-consumer'
 	version = '0.0.1-SNAPSHOT'
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
-    mavenLocal()
+  mavenLocal()
 }
 
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
-	//compile('org.springframework.boot:spring-boot-starter-actuator')
-	//testCompile('org.springframework.boot:spring-boot-starter-test')
-    //testCompile('org.springframework.cloud:spring-cloud-contract-wiremock')
-    testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
+  testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
 }
 
 dependencyManagement {
 	imports {
-		//mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
-        mavenBom 'org.springframework.cloud:spring-cloud-contract-dependencies:1.0.2.RELEASE'
+      mavenBom 'org.springframework.cloud:spring-cloud-contract-dependencies:1.0.2.RELEASE'
 	}
 }
