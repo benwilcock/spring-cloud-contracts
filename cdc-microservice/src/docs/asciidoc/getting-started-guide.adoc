@@ -1,0 +1,74 @@
+= CDC Microservice (Fraud) Getting Started Guide
+Ben Wilcock;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[introduction]
+== Introduction
+
+CDC Microservice (Fraud) is a demonstrator RESTful web service that shows how to use Spring Cloud Contracts and Spring Rest Docs.
+
+
+[getting-started]
+== Getting started
+
+[getting-started-running-the-service]
+=== Running the service
+CDC-Microservice (Fraud) is written using http://projects.spring.io/spring-boot[Spring Boot] which
+makes it easy to get it up and running so that you can start exploring the REST API.
+
+The first step is to clone the Git repository:
+
+[source,bash]
+----
+$ git clone https://github.com/benwilcock/spring-cloud-contracts
+----
+
+Once the clone is complete, you're ready to get the service up and running:
+
+[source,bash]
+----
+$ cd cdc-microservice
+$ gradle build publishToMavenLocal bootRun
+----
+
+[fraud-checking]
+== Performing a Fraud Check
+
+You can check that the service is working by asking for a Fraud Check to be undertaken.
+
+=== The PUT Request
+
+You can do this with cURL:
+
+include::{snippets}/index/curl-request.adoc[]
+
+Or you can use ordinary http:
+
+include::{snippets}/index/http-request.adoc[]
+
+The request headers are:
+
+include::{snippets}/index/request-headers.adoc[]
+
+The request fields are:
+
+include::{snippets}/index/request-fields.adoc[]
+
+=== The Fraud Check Response
+
+This PUT request should yield the following response:
+
+include::{snippets}/index/http-response.adoc[]
+
+The response headers are:
+
+include::{snippets}/index/response-headers.adoc[]
+
+The response fields are:
+
+include::{snippets}/index/response-fields.adoc[]

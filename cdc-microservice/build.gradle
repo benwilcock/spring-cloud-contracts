@@ -13,6 +13,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.asciidoctor.convert" version "1.5.2"
+}
+
 group = 'io.pivotalservices'
 version = '0.0.1-SNAPSHOT'
 
@@ -44,5 +48,45 @@ contracts {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    //compile('org.springframework.boot:spring-boot-starter-actuator')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile ('org.springframework.restdocs:spring-restdocs-mockmvc:1.1.2.RELEASE')
     testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+}
+
+
+
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+test {
+    outputs.dir snippetsDir
+}
+
+asciidoctor {
+    attributes 'snippets': snippetsDir
+    inputs.dir snippetsDir
+    dependsOn test
+}
+
+//jar {
+//    dependsOn asciidoctor
+//    from ("${asciidoctor.outputDir}/html5") {
+//        into 'public'
+//        //into 'public/docs'
+//        //into 'static'
+//        //into 'static/docs'
+//    }
+//}
+
+task copyRestDocs(type: Copy) {
+    dependsOn asciidoctor
+    from "${asciidoctor.outputDir}/html5"
+    into "${sourceSets.main.output.resourcesDir}/static"
+}
+
+bootRun {
+    dependsOn copyRestDocs
 }

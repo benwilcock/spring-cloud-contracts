@@ -40,7 +40,7 @@ public class ApplicationTests {
 
 	@Test
 	public void contextLoads() {
-        // Check the contect is loading OK. Should be no exceptions here.
+        // Check the context is loading OK. Should be no exceptions here.
 	}
 
     /**
@@ -50,7 +50,7 @@ public class ApplicationTests {
     public void shouldRejectWhenAmountIsTooHigh(){
 
 	    // Given
-        FraudCheck check = new FraudCheck("", new BigDecimal(5001));
+        FraudCheck check = new FraudCheck("1234567890", new BigDecimal(5001));
         HttpEntity entity = new HttpEntity(check, headers);
 
         // When
@@ -68,7 +68,7 @@ public class ApplicationTests {
     public void shouldAcceptWhenAmountIsOK(){
 
         // Given
-        FraudCheck check = new FraudCheck("", new BigDecimal(4999));
+        FraudCheck check = new FraudCheck("1234567890", new BigDecimal(4999));
         HttpEntity entity = new HttpEntity(check, headers);
 
         // When

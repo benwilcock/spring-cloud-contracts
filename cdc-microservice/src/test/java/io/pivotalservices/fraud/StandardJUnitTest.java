@@ -25,13 +25,13 @@ public class StandardJUnitTest {
     public void testLimiter(){
         Assert.assertTrue(
                 controller.amountGreaterThanThreshold(
-                        new FraudCheck("", new BigDecimal(5001))
+                        new FraudCheck("1234567890", new BigDecimal(5001))
                 )
         );
 
         Assert.assertFalse(
                 controller.amountGreaterThanThreshold(
-                        new FraudCheck("", new BigDecimal(4999))
+                        new FraudCheck("1234567890", new BigDecimal(4999))
                 )
         );
     }
@@ -40,7 +40,7 @@ public class StandardJUnitTest {
     public void testFraudCheckResultForTooHigh(){
 
         // Given
-        FraudCheck check = new FraudCheck("", new BigDecimal(5001));
+        FraudCheck check = new FraudCheck("1234567890", new BigDecimal(5001));
 
         // When
         FraudCheckResult result = controller.fraudCheck(check);
@@ -53,7 +53,7 @@ public class StandardJUnitTest {
     public void testFraudCheckResultForOK(){
 
         // Given
-        FraudCheck check = new FraudCheck("", new BigDecimal(4999));
+        FraudCheck check = new FraudCheck("1234567890", new BigDecimal(4999));
 
         // When
         FraudCheckResult result = controller.fraudCheck(check);

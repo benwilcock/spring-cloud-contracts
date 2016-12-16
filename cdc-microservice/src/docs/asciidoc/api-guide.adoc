@@ -1,0 +1,53 @@
+= CDC-Microservice (Fraud) API Guide
+Ben Wilcock;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[overview]]
+= Overview
+
+Basic conventions used.
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `PUT`
+| Used to obtain a Fraud Check
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+Cdc Microservice (Fraud) tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+|===
+
+[[overview-headers]]
+== Headers
+
+Every request has the following header(s):
+
+include::{snippets}/index/request-headers.adoc[]
+
+Every response has the following header(s):
+
+include::{snippets}/index/response-headers.adoc[]
